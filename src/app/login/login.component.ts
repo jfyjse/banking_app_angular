@@ -13,15 +13,51 @@ export class LoginComponent implements OnInit {
     1003: { accno: 1003, name: "userfour", balance: 8000, password: "user4" },
     1004: { accno: 1004, name: "userfive", balance: 61000, password: "user5" },
 }
-
+ usrname="";
+ pswd="";
+ aim="poda mwoana"
+ uname="enter use name"
   constructor() { }
 
   ngOnInit(): void {
   }
+  getUsername(event:any)
+  {
+    this.usrname=event.target.value;
+    console.log(this.usrname);
+    
+  }
+  getPswd(event:any){
+    this.pswd=event.target.value;
+    console.log(this.pswd);
+    
+  }
 
   login()
   {
-    alert("login worka")
+    
+    
+  //     let accno = document.querySelector("#acno").value;
+  //     let pwd = document.querySelector("#pswd").value;
+  //     let data = Bank.getAccountdetails()
+  //     {
+  //         if (accno in data) {
+  //             // alert("exist")
+  //             if (pwd == data[accno]["password"]) {
+  //                 // alert ("login success")
+  //                 window.location.href = "banktbtn.htm";
+  //             }
+  //             else {
+  //                 alert("not success")
+  //             }
+  //         }
+  //         else {
+  //             alert("not an acc")
+  //         }
+  //     }
+
+  // }
+
   }
 
 }
