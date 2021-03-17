@@ -8,17 +8,17 @@
     <div style="width: 35%;height: 330px; background-color: white ; border-radius: 2px;" class="container">
         <div class="mb-3">
             <label style="margin-top: 7px;" for="acno" class="form-label">Account number</label>
-            <input [value]="uname"  type="text" (change)="getUsername($event)" class="form-control" id="acno">
+            <input [value]="aim"  type="text" [(ngModel)]="accno" name= "accno" class="form-control" id="acno">
 
         </div>
         <div class="mb-3">
             <label for="pswd" class="form-label">password</label>
-            <input type="password" (change)="getPswd($event)" class="form-control" id="pswd">
+            <input type="password" [(ngModel)]="pswd" name="pswd" class="form-control" id="pswd">
             <div id="emailHelp" class="form-text">We'll never share your password with anyone else.</div>
         </div>
         <div style="display: flex;justify-content: center;">
             <button type="button" (click)="login()" class="btn btn-primary">login</button>
-            <a href="">Reg</a>
+            
         </div></div>
 
        
