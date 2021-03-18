@@ -1,23 +1,23 @@
 <div style="text-align: center;" class="container">
-    <h1 style=" margin-top:30px;">State Bank Of India</h1>
+    <h1 style=" margin-top:30px;">State Bank Of India -create account</h1>
     
 </div>
 
 
-<form>
+<form (ngSubmit)="register()">
     <div style="width: 35%;height: 330px; background-color: white ; border-radius: 2px;" class="container">
         <div class="mb-3">
             <label style="margin-top: 7px;" for="acno" class="form-label">Account number</label>
-            <input  type="text"  class="form-control" id="acno">
+            <input  type="text" [(ngModel)]="accno" name= "accno" class="form-control" id="acno">
 
         </div>
         <div class="mb-3">
             <label for="pswd" class="form-label">password</label>
-            <input type="password"  class="form-control" id="pswd">
+            <input type="password" [(ngModel)]="pswwd" name= "pswwd" class="form-control" id="pswd">
             <div id="emailHelp" class="form-text">We'll never share your password with anyone else.</div>
         </div>
         <div style="display: flex;justify-content: center;">
-            <button type="button" class="btn btn-primary">login</button>
+            <button type="submit"  class="btn btn-primary">Register</button>
         
         
         </div></div>
