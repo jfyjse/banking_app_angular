@@ -4,17 +4,18 @@
 </div>
 
 
-<form (ngSubmit)="register()">
+<form [formGroup]="regForm" (ngSubmit)="register()">
     <div style="width: 35%;height: 330px; background-color: white ; border-radius: 2px;" class="container">
         <div class="mb-3">
             <label style="margin-top: 7px;" for="acno" class="form-label">Account number</label>
-            <input  type="text" [(ngModel)]="accno" name= "accno" class="form-control" id="acno">
+            <input  type="text" formControlName="accno" name= "accno" class="form-control" id="acno">
+            <div *ngIf="this.regForm.get('accno')?.errors" id="erraccno" class="err">invalid accno</div>
 
         </div>
         <div class="mb-3">
             <label for="pswd" class="form-label">password</label>
-            <input type="password" [(ngModel)]="pswwd" name= "pswwd" class="form-control" id="pswd">
-            <div id="emailHelp" class="form-text">We'll never share your password with anyone else.</div>
+            <input type="password" formControlName="pwd" name= "pwd" class="form-control" id="pswd">
+            <div *ngIf="this.regForm.get('pwd')?.errors" id="paass" class="err">Wrng pwd</div>
         </div>
         <div style="display: flex;justify-content: center;">
             <button type="submit"  class="btn btn-primary">Register</button>
