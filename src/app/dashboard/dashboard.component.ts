@@ -12,4 +12,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deposit()
+  {
+    alert("dep kliked")
+  }
+
 }
