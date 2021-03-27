@@ -1,10 +1,14 @@
 <div style="text-align: center;"  class="container">
-    <h1 style=" margin-top:30px;">User Login</h1>
-  </div>
+  <h1 style=" margin-top:30px;">Welcome {{this.dataser.currentUser}}</h1>
+</div>
 
+<table style="margin-left: 25%;"><tr><td>
+  <form [formGroup]="depForm" (ngSubmit)="deposit()">
+    <div style="text-align: center;"  class="container">
+      <h2 style=" margin-top:30px;">Cash Deposit Form</h2>
+    </div>
 
-  <form>
-    <div style="width: 35%;height: 330px; background-color: white ; border-radius: 2px;" class="container">
+    <div style="width: 100%;height: 330px; background-color: white ; border-radius: 2px;" class="container">
       <div class="mb-3">
         <label style="margin-top: 7px;" for="acno" class="form-label">Account number</label>
         <input type="text" class="form-control" id="acno">
@@ -13,8 +17,7 @@
       <div class="mb-3">
         <label for="pswd" class="form-label">password</label>
         <input type="password" class="form-control" id="pswd">
-        <div id="emailHelp" class="form-text">We'll never share your password with anyone else.</div>
-      </div>
+        </div>
       
 
 
@@ -28,10 +31,48 @@
       
       <div style="display: flex;justify-content: center;">
         <button  type="button" (click)="deposit()" class="btn btn-primary">deposit</button>
-        <button style="margin-left: 5px;" type="button" onclick="Bank.withdraw()" class="btn btn-primary">withdraw</button>
+        
       </div>
     </div>
 
   </form>
+</td>
+<td>
+
+  <form [formGroup]="withForm" (ngSubmit)="withdraw()">
+    <div style="text-align: center;"  class="container">
+      <h2 style=" margin-top:30px;">Cash Withdrawal Form</h2>
+    </div>
+    
+    <div style="width: 100%;height: 330px; background-color: white ; border-radius: 2px;" class="container">
+      <div class="mb-3">
+        <label style="margin-top: 7px;" for="acno" class="form-label">Account number</label>
+        <input type="text" class="form-control" id="acno">
+
+      </div>
+      <div class="mb-3">
+        <label for="pswd" class="form-label">password</label>
+        <input type="password" class="form-control" id="pswd">
+        </div>
+      
+
+
+      <div class="mb-3">
+        <label for="pswd" class="form-label">Amount</label>
+        <input type="text" class="form-control" id="amt">
+        <div id="emailHelp" class="form-text">Enter in indian rupees</div>
+      </div>
+
+
+      
+      <div style="display: flex;justify-content: center;">
+       <button style="margin-left: 5px;" type="button" onclick="Bank.withdraw()" class="btn btn-primary">withdraw</button>
+      </div>
+    </div>
+
+  </form>
+</td>
+</tr></table>
+
 
   

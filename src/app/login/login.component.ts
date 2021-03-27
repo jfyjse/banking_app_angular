@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -8,12 +9,17 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  accno= "enter acco";
+
+  accno = "enter acco";
   pswd = "";
   aim = "pewer"
+  loginForm = this.fb.group({
+    accno: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4), Validators.pattern('[0-9]*')]],
+    pwd: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]]
 
-  constructor(private router:Router, private dataservice:DataService) { }
+  })
+
+  constructor(private router: Router, private dataservice: DataService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -27,27 +33,28 @@ export class LoginComponent implements OnInit {
   // }
 
   login() {
-    var accNuo = this.accno;
-    var pwd = this.pswd;
-    var data = this.dataservice.accountDetails;
 
-    if (accNuo in data) {
-      var psw1 = data[accNuo].password;
-      if (pwd == psw1) {
-        console.log("login success");
-        this.router.navigateByUrl("dashboard")
 
+
+    if (this.loginForm.valid) {
+      console.log("form vaild");
+
+      var accNuo = this.loginForm.value.accno;
+      var pwd = this.loginForm.value.pwd;
+      var res = this.dataservice.login(accNuo, pwd)
+
+      if (res) {
+        this.router.navigateByUrl("dashboard");
       }
       else {
-        console.log("inncorrect pswd");
-
+        alert("invalid accno / pswrd");
       }
+
     }
     else {
-      console.log("no user account");
+      alert("invalid form")
 
     }
-
   }
 
 }
