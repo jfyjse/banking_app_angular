@@ -30,11 +30,26 @@ export class DashboardComponent implements OnInit {
 
   deposit()
   {
-    alert("dep kliked")
+    if(this.depForm.valid){
+      this.dataser.deposit(this.depForm.value.accno,this.depForm.value.pwd,this.depForm.value.amt)
+
+    }
+    else
+    {
+      alert("invalid frms")
+    }
   }
 
   withdraw()
   {
+    if(this.withForm.valid){
+      this.dataser.withdraw(this.withForm.value.accno,this.withForm.value.pwd,this.withForm.value.amt)
+
+    }
+    else
+    {
+      alert("invalid frms")
+    }
 
   }
 

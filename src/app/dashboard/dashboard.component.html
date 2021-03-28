@@ -11,26 +11,32 @@
     <div style="width: 100%;height: 330px; background-color: white ; border-radius: 2px;" class="container">
       <div class="mb-3">
         <label style="margin-top: 7px;" for="acno" class="form-label">Account number</label>
-        <input type="text" class="form-control" id="acno">
+        <input type="text" class="form-control" formControlName ="accno" name="accno" id="acno">
+        <div *ngIf="(this.depForm.get('accno')?.touched||this.depForm.get('accno')?.dirty)&&this.depForm.get('accno')?.errors" class="err">invalid accno</div>
+
+
 
       </div>
       <div class="mb-3">
         <label for="pswd" class="form-label">password</label>
-        <input type="password" class="form-control" id="pswd">
+        <input type="password" class="form-control" formControlName ="pwd" name="pwd" id="pswd">
+        <div *ngIf="(this.depForm.get('pwd')?.touched||this.depForm.get('pwd')?.dirty)&&this.depForm.get('pwd')?.errors" class="err">illegal pwd</div>
+
         </div>
       
 
 
       <div class="mb-3">
         <label for="pswd" class="form-label">Amount</label>
-        <input type="text" class="form-control" id="amt">
+        <input type="text" class="form-control" formControlName ="amt" name="pwd" id="amt">
+        <div *ngIf="(this.depForm.get('amt')?.touched||this.depForm.get('amt')?.dirty)&&this.depForm.get('amt')?.errors" class="err">illegal amt</div>
         <div id="emailHelp" class="form-text">Enter in indian rupees</div>
       </div>
 
 
       
       <div style="display: flex;justify-content: center;">
-        <button  type="button" (click)="deposit()" class="btn btn-primary">deposit</button>
+        <button  type="submit"  class="btn btn-primary">deposit</button>
         
       </div>
     </div>
@@ -47,26 +53,33 @@
     <div style="width: 100%;height: 330px; background-color: white ; border-radius: 2px;" class="container">
       <div class="mb-3">
         <label style="margin-top: 7px;" for="acno" class="form-label">Account number</label>
-        <input type="text" class="form-control" id="acno">
+        <input type="text" formControlName="accno" name="accno" class="form-control" id="acno">
+        <div *ngIf="(this.withForm.get('accno')?.touched||this.withForm.get('accno')?.dirty)&&this.withForm.get('accno')?.errors" class="err">invalid accno</div>
+
+
 
       </div>
       <div class="mb-3">
         <label for="pswd" class="form-label">password</label>
-        <input type="password" class="form-control" id="pswd">
+        <input type="password" formControlName="pwd" name="pwd" class="form-control" id="pswd">
+        <div *ngIf="(this.withForm.get('pwd')?.touched||this.withForm.get('pwd')?.dirty)&&this.withForm.get('pwd')?.errors" class="err">illegal pwd</div>
+
         </div>
       
 
 
       <div class="mb-3">
         <label for="pswd" class="form-label">Amount</label>
-        <input type="text" class="form-control" id="amt">
+        <input type="text" formControlName="amt" name="amt" class="form-control" id="amt">
+        <div *ngIf="(this.withForm.get('amt')?.touched||this.withForm.get('amt')?.dirty)&&this.withForm.get('amt')?.errors" class="err">invalid amt</div>
         <div id="emailHelp" class="form-text">Enter in indian rupees</div>
+        
       </div>
 
 
       
       <div style="display: flex;justify-content: center;">
-       <button style="margin-left: 5px;" type="button" onclick="Bank.withdraw()" class="btn btn-primary">withdraw</button>
+       <button style="margin-left: 5px;" type="submit"  class="btn btn-primary">withdraw</button>
       </div>
     </div>
 

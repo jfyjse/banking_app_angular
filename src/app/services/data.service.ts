@@ -13,7 +13,21 @@ export class DataService {
   }
   currentUser:any;
 
-  constructor() { }
+  constructor() {
+    // this.getDetails();
+   }
+
+  // saveDetails()
+  // {
+  //   localStorage.setItem("accountDetails",JSON.stringify(this.accountDetails))
+  //   localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
+  // }
+
+  // getDetails()
+  // {
+  //   this.accountDetails= localStorage.getItem("accountDetails")
+  //   this.currentUser= localStorage.getItem("currentUser")
+  // }
   register(accno: any, password: any) {
     if (accno in this.accountDetails) {
       console.log("user exist log in");
@@ -28,6 +42,8 @@ export class DataService {
       balance: 0,
       password
     }
+    // this.saveDetails()
+    alert("reg success")
     console.log(this.accountDetails);
     return true;
 
@@ -40,9 +56,11 @@ export class DataService {
     if (accno in data) {
       var psw1 = data[accno].password;
       if (pwd == psw1) {
+        
         console.log("login success");
         var userl= data[accno].name;
         this.currentUser=userl;
+        // this.saveDetails();
         
         return true;
 
@@ -58,7 +76,68 @@ export class DataService {
       return false;
 
     }
-    
-
   }
+
+
+deposit(accno:any,pwd:any,amt:any)
+{
+  var ammt = parseInt(amt)
+  var data = this.accountDetails;
+
+    if (accno in data) {
+      var psw1 = data[accno].password;
+      if (pwd == psw1) {
+        // this.saveDetails();
+        console.log("login success");
+        data[accno].balance+=ammt;
+        alert("acc credited wit :"+amt+" new bal= " + data[accno].balance)        
+        
+
+      }
+      else {
+        console.log("inncorrect pswd");
+        
+
+      }
+    }
+    else {
+      console.log("no user account");
+      
+
+    }
+  
+}
+
+withdraw(accno:any,pwd:any,amt:any){
+  var ammt = parseInt(amt)
+  var data = this.accountDetails;
+
+    if (accno in data) {
+      var psw1 = data[accno].password;
+      if (pwd == psw1) {
+        // this.saveDetails();
+        console.log("login success");
+        if((data[accno].balance) < ammt)
+        {
+          alert("no money monu")
+        }
+        else
+        {
+          data[accno].balance-=ammt;
+          alert("acc debited wit :"+amt+" new bal= " + data[accno].balance);
+        }
+        }
+      else {
+        console.log("inncorrect pswd");
+        
+
+      }
+    }
+    else {
+      console.log("no user account");
+      
+
+    }
+}
+
 }
