@@ -25,41 +25,22 @@ export class RegisterComponent implements OnInit {
 
 
   register()
-  {
-    // if(this.regForm.get('accno')?.errors)
-    // {
-    //   alert("inavalid unme")
-    // }
-    
+  {    
     if(this.regForm.valid)
     {
       console.log("form vaild");
-      
-    }
+      this.dataser.register(this.regForm.value.accno,this.regForm.value.pwd).subscribe(data=>{
+        if(data)
+        {
+          alert("reg succ");
+          this.router.navigateByUrl("");
+        }
+      },(data)=>{ alert(data.error.message); })
+ }
     else
     {
-      
-      this.router.navigateByUrl("register");
       alert("invalid form")
       
     }
-    console.log(this.regForm.value);
-    var ress=this.dataser.register(this.regForm.value.accno,this.regForm.value.pwd)
-    
-    // console.log("registtt click");
-    // var res=this.dataser.register(this.accno,this.pswwd)
-    // console.log(this.accno, this.pswwd);
-
-    if(ress)
-    {
-      this.router.navigateByUrl("");
-    }
-    else
-    {
-      this.router.navigateByUrl("");
-    }
-    
-    
   }
-
 }

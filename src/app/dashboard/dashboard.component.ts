@@ -22,8 +22,13 @@ export class DashboardComponent implements OnInit {
     amt:['',[Validators.required, Validators.maxLength(8), Validators.pattern('[0-9]*')]]
     
   })
+  name:any;
+  balance:any;
 
-  constructor( private fb:FormBuilder,  public dataser:DataService) { }
+  constructor( private fb:FormBuilder,  public dataser:DataService) { 
+   this.name= localStorage.getItem("name")
+    this.balance= localStorage.getItem("balance")
+  }
 
   ngOnInit(): void {
   }
@@ -31,7 +36,15 @@ export class DashboardComponent implements OnInit {
   deposit()
   {
     if(this.depForm.valid){
-      this.dataser.deposit(this.depForm.value.accno,this.depForm.value.pwd,this.depForm.value.amt)
+      this.dataser.deposit(this.depForm.value.accno,this.depForm.value.pwd,this.depForm.value.amt).subscribe((dat:any)=>
+      {
+        if(dat)
+        {
+          alert(dat.message);
+        }
+      },(dat)=>{
+        alert(dat.error.message)
+      })
 
     }
     else
@@ -43,7 +56,13 @@ export class DashboardComponent implements OnInit {
   withdraw()
   {
     if(this.withForm.valid){
-      this.dataser.withdraw(this.withForm.value.accno,this.withForm.value.pwd,this.withForm.value.amt)
+      this.dataser.withdraw(this.withForm.value.accno,this.withForm.value.pwd,this.withForm.value.amt).subscribe((dt:any)=>{
+        if(dt){
+          alert(dt.message)
+        }
+      },(dt)=>{
+        alert(dt.error.message)
+      })
 
     }
     else

@@ -39,18 +39,21 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       console.log("form vaild");
 
-      var accNuo = this.loginForm.value.accno;
-      var pwd = this.loginForm.value.pwd;
-      var res = this.dataservice.login(accNuo, pwd)
+      // var accNuo = this.loginForm.value.accno;
+      // var pwd = this.loginForm.value.pwd;
+      this.dataservice.login(this.loginForm.value.accno, this.loginForm.value.pwd).subscribe((data:any)=>{
+        if(data)
+        {
+          alert("reg succ");
 
-      if (res) {
-        this.router.navigateByUrl("dashboard");
-      }
-      else {
-        alert("invalid accno / pswrd");
-      }
+          // alert(data.name + data.bal)
+          localStorage.setItem("name",data.name);
+          localStorage.setItem("balance",data.bal)
+          this.router.navigateByUrl("dashboard");
+        }
+      },(data)=>{ alert(data.error.message); })
 
-    }
+     }
     else {
       alert("invalid form")
 
