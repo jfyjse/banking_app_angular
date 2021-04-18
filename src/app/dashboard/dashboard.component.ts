@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit {
   name:any;
   balance:any;
 
+  lLogin:Date =new Date;
+
   constructor( private fb:FormBuilder,  public dataser:DataService) { 
    this.name= localStorage.getItem("name")
     this.balance= localStorage.getItem("balance")
